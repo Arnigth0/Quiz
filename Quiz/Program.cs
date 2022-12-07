@@ -3,23 +3,23 @@
     class Answers
     {
         public string Answer { get; set; }
-        public bool flag { get; set; }
+        public bool Flag { get; set; }
 
-        public Answers(string Answer, bool flag)
+        public Answers(string Answer, bool Flag)
         {
             this.Answer = Answer;
-            this.flag = flag;
+            this.Flag = Flag;
         }
     }
 
     class QuestionAnswer
     {
-        public string question { get; set; }
+        public string Question { get; set; }
         public List<Answers> Answer { get; set; }
        
-        public QuestionAnswer(string question, List<Answers> Answer)
+        public QuestionAnswer(string Question, List<Answers> Answer)
         {
-            this.question = question;
+            this.Question = Question;
             this.Answer = Answer;
         }
     }
@@ -71,14 +71,14 @@
         Console.WriteLine("Пожалуйства вводите только ID ответа!");
         foreach (var quest in questAnswer)
         {
-            Console.WriteLine($"\nВопрос №{i++}. {quest.question}.");
+            Console.WriteLine($"\nВопрос №{i++}. {quest.Question}.");
 
             var ansId = 1;
             foreach (var answer in quest.Answer)
                 Console.WriteLine($"\t{ansId++}. {answer.Answer}.");          
 
             int chose = Convert.ToInt32(Console.ReadLine())!;
-            if (Convert.ToInt32(chose) > 0 && Convert.ToInt32(chose) < 10 && quest.Answer[chose - 1].flag == true)
+            if (quest.Answer[chose - 1].Flag == true)
                 rightAnswer++;
         }
 
